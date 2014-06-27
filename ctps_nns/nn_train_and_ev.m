@@ -115,11 +115,13 @@ switch param.calculate_jacobian
         out.outgr=glmfwdder_dist(net,ev.data);    
     case 3
         out.outgr=glmfwdder_zeros(net,ev.data);
+    case 4
+        out.outgr=glmfwdder_zeros2(net,ev.data);
         
 end
 end
 
-display(['maloufa: ' num2str(nhidden)])
+
 if nhidden>0
     
 switch param.calculate_jacobian_tr_set
@@ -128,10 +130,10 @@ switch param.calculate_jacobian_tr_set
     case 2
         out.outgr_tr=mlpfwdder_dist(net,tr.data);    
     case 3
-        display('maloufa')
+        
         out.outgr_tr=mlpfwdder_zeros(net,tr.data);
     case 4
-        out.outgr_tr=mlpfwdder_zeros2(net,ev.data);
+        out.outgr_tr=mlpfwdder_zeros2(net,tr.data);
     case 5
         
         
@@ -145,6 +147,8 @@ else
         out.outgr_tr=glmfwdder_dist(net,tr.data);    
     case 3
         out.outgr_tr=glmfwdder_zeros(net,mean(tr.data));
+    case 4
+        out.outgr_tr=glmfwdder_zeros2(net,tr.data);
 end
 end
 %pause
