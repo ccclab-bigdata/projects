@@ -79,7 +79,7 @@ for regparami=1:length(param.regparam_mat);
                     
                     [out,net]=nn_train_and_ev(tr,ev,param,ev);
                     
-                    output_struct.ye(subji,bli,nhi,tpi,regparami,:,:)=out.ye;
+                    %output_struct.ye(subji,bli,nhi,tpi,regparami,:,:)=out.ye;
                     %output_struct.tr(subji,bli,nhi,tpi,regparami,:,:)=tr.data;
                     %output_struct.ev(subji,bli,nhi,tpi,regparami,:,:)=ev.data;
                     

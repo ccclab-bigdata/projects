@@ -26,14 +26,14 @@ end
     
 x=1:size(data,2);
 y=mean(data);
-sy=std(data)
+sy=std(data);
 yms=y-sy;
 % Now make the 'line' (actually a surface)...
 z = zeros(size(x));
-hfill=fill([x x(end:-1:1)],[y+sy yms(end:-1:1)],'k','FaceColor',opts.color,'EdgeColor','none')
+hfill=fill([x x(end:-1:1)],[y+sy yms(end:-1:1)],'k','FaceColor',opts.color,'EdgeColor','none');
 %set( harea, 'FaceColor', opts.color)
-alpha(hfill,opts.facealpha)
-l1=plot(x,y,'k','LineWidth',2)
+alpha(hfill,opts.facealpha);
+l1=plot(x,y,'k','LineWidth',2);
 
 %l1=plot(x,y,'Color',opts.color,'LineWidth',2)
 

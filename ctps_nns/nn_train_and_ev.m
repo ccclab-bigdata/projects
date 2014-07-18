@@ -117,7 +117,8 @@ switch param.calculate_jacobian
         out.outgr=glmfwdder_zeros(net,ev.data);
     case 4
         out.outgr=glmfwdder_zeros2(net,ev.data);
-        
+    case 6
+        out.outgr=glmfwdder_zeros_searchlight(net, ev.data, param.vox);
 end
 end
 
