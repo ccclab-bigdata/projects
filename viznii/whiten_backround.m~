@@ -1,0 +1,31 @@
+%% This script load a standard NIFTI file and 
+% it replaces the black background with a white one.
+% It then saves the output to a new NIFTI file 
+% (however not with the same header file as the original one)
+% Copyright 2014 -  A. Gotsopoulos
+
+addpath('nifti'); % Make sure that the nifti path is added. It is necessary in order to load files
+
+
+base=load_nii('MNI152_T1_2mm.nii'); % Load some NIFTI file. This one fore
+
+
+base=load_nii('MNI152lin_T1_1mm.nii');
+
+niiimg=double(base.img);
+
+niiimg=niiimg./max(niiimg(:));
+
+
+%b=double(magicwand3d2(niiimg,1,1,1,0.3)); % tol 0.3 is good for 2mm
+b=double(magicwand3d2(niiimg,1,1,1,0.2));
+
+temp2=smooth3(b,'gaussian',5,1);
+%view_nii(make_nii(temp2))
+%view_nii(make_nii(b));
+view_nii(make_nii((1-temp2).*niiimg+temp2));
+
+%view_nii(make_nii(b))
+%view_nii(make_nii(niiimg))
+%view_nii(make_nii(temp2))
+save_nii(make_nii((1-temp2).*niiimg+temp2),'whitened_1mm.nii')
